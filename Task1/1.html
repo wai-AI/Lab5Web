@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+    <style>
+        #content {
+            background-color: yellow;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" onclick="loadLanguages()">Мови</a> |
+    <a href="#" onclick="loadStudents()">Студенти</a>
+    <div id="content"></div>
+
+    <script>
+        function loadLanguages() {
+            fetch('1.txt')
+            .then(response => response.json())
+            .then(data => {
+                displayData(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function loadStudents() {
+            fetch('2.txt')
+            .then(response => response.json())
+            .then(data => {
+                displayData(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function displayData(data) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = ''; // Очистка содержимого div перед добавлением новых данных
+
+            const ul = document.createElement('ul');
+            if (Array.isArray(data)) {
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+            } else if (typeof data === 'object') {
+                for (const key in data) {
+                    const li = document.createElement('li');
+                    li.textContent = `${key}: ${data[key]}`;
+                    ul.appendChild(li);
+                }
+            }
+            contentDiv.appendChild(ul);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "language1": "python",
+    "language2": "JS",
+    "language3": "Ruby",
+    "language4": "C#",
+    "language5": "C++",
+    "language6": "C",
+    "language7": "Java",
+    "language8": "Assembler"
+}
