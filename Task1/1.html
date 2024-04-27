@@ -38,8 +38,8 @@
 
         function displayData(data) {
             const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = ''; // Очистка содержимого div перед добавлением новых данных
-
+            contentDiv.innerHTML = '';
+            
             const ul = document.createElement('ul');
             if (Array.isArray(data)) {
                 data.forEach(item => {
